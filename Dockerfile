@@ -27,7 +27,15 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 # Install apt packages:
-# RUN sudo apt-get install -y ubuntu-make
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+RUN sudo apt install -y nodejs
+RUN sudo apt install -y iputils-ping net-tools zsh openssh-server
+RUN sudo service ssh start
+RUN sudo passwd {user}
+RUN sudo wget "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+RUN sudo unzip "ngrok-stable-linux-amd64.zip"
+RUN sudo apt update
+RUN sudo su
 
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
